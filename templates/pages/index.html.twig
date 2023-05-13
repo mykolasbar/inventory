@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <section class="pt-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Inventory</h1>
+            </div>
+                <form action="{{ path('finditems') }}" method="GET">
+                <label><b>Search inventory:</b> </label>
+                <label for = "id">ID</label>
+                <input type="checkbox" id="id" name="id" checked>
+                <label for = "name">Name</label>
+                <input type="checkbox" id="name" name="name" checked>
+                <input type="search" name="q">
+                <input type="submit" value="Go" for="q">
+            </form>
+        </div>
+    </section>
+        <main>
+        <div class="py-5 bg-light">
+            <div class="container w-75">
+                <div class = "pb-3">
+                    <div>
+                        <span><b>Sort items: </b></span>
+                        Alphabetically 
+                        <a href="{{ path('alphabeticalsort') }}" class="btn btn-sm btn-outline-secondary">Increasing</a>
+                        <a href="{{ path('alphabeticalsortreverse') }}" class="btn btn-sm btn-outline-secondary">Decreasing</a>
+                        By ID 
+                        <a href="{{ path('increasingsort') }}" class="btn btn-sm btn-outline-secondary">Increasing</a>
+                        <a href="{{ path('decreasingsort') }}" class="btn btn-sm btn-outline-secondary">Decreasing</a>&nbsp;
+                        <a href="{{ path('additem') }}" class="btn btn-sm btn-outline-secondary bg-primary text-white">Add new item</a>
+                    </div>
+                </div>
+                <table class="">
+                    <tr>
+                        <th>Item ID</th>
+                        <th>Title</th>
+                        <th>Price (EUR)</th>
+                        <th>Amount</th>
+                    </tr>
+                    {% for item in items %}
+                        <tr>
+                            <td class = "w-25">{{item.id}}</td>
+                            <td class = "w-25">{{item.title}}</td>
+                            <td class = "w-25">{{item.price}}</td>
+                            <td class = "w-25">{{item.amount}}</td>
+                            <td class="mr-3"><a href="{{ path('edititem', {id: item.id}) }}" class="btn btn-sm btn-outline-secondary">Edit</a></td>
+                            <td><a href="{{ path('deleteitem', {id: item.id}) }}" class="btn btn-sm btn-outline-secondary bg-danger text-white">Delete</a></td>
+                        </tr>
+                    {% endfor  %}
+                    <tr>
+                        <td></td><td></td><td><b>Total: </b>{{totalprice}}</td> <td><b>Total: </b>{{totalamount}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

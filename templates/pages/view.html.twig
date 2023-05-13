@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <main>
+        <div class="py-5 bg-light">
+            <div class="container">
+                <div class="py-5 text-center">
+                    <h1 class="fw-bold">{{ article.title }}</h1>
+                    <p class="text-muted">Average read time: {{readtime}} minutes.</p>
+                </div>
+
+                <div style = "display:flex; justify-content:flex-end; padding-bottom:10px"> <a href="{{ path('editarticle_view', {id: article.id}) }}" class="btn btn-sm" style="color:blue" style="color:blue">Edit article</a> <a href="{{ path('delete_article', {id: article.id}) }}" class="btn btn-sm" style="color:red">Delete article</a></div>
+                
+                <img class="img-fluid" src="{{ article.image }}" alt="">
+
+                <div class="mt-4 mb-4"><b>Article last updated at:</b> {{ article.updatedAt != null ? date : "No updates made." }}</div>
+
+                <div class="lead mb-4">{{ article.text | raw }}</div>
+
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="{{ path('home') }}" type="button" class="btn btn-secondary btn-lg px-4 gap-3">Back</a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+

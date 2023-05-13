@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Inventory</h1>
+            </div>
+        </div>
+    </section>
+    <main>
+        <div class="py-5 bg-light">
+            <div class="container">
+            <a href="{{ path('home') }}">Show all</a>
+                <div>Sort items:</div>
+                <div>
+                    <a href="{{ path('alphabeticalsort') }}" class="btn btn-sm btn-outline-secondary">Alphabetically</a>
+                    By ID: <a href="{{ path('increasingsort') }}" class="btn btn-sm btn-outline-secondary">Increasing</a>
+                    <a href="{{ path('decreasingsort') }}" class="btn btn-sm btn-outline-secondary">Decreasing</a>
+                </div>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    {% if results %}
+                        {% for result in results %}
+                            <div class="col">
+                                {{result.title}}
+                                {{result.price}}
+                                {{result.amount}}
+                                <a href="{{ path('edititem', {id: result.id}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                <a href="{{ path('deleteitem', {id: result.id}) }}" class="btn btn-sm btn-outline-secondary bg-danger text-white">Delete</a>
+                            </div>
+                        {% endfor  %}
+                    {% else %}
+                        <span>No items found.</span>
+                        {{message}}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

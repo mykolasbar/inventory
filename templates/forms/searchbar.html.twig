@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <main class="container w-75 mt-5">
+        <div style = "padding: 20px; border: 1px solid grey; border-radius:10px">
+            {{ form_start(form) }}
+                <div class="p-2">{{ form_row(form.search) }}</div>
+                <button class="p-2">{{ form_row(form.submit) }}</button>
+            {{ form_end(form) }}
+        <div>
+    </main>
+{% endblock %}

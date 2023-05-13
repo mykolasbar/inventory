@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <main class="container w-75 mt-5">
+        <a href="{{ path('home') }}" class="btn btn-sm">Navigate to index page</a>
+            <div style = "padding: 20px; border: 1px solid grey; border-radius:10px">
+                <h3>{{ header }}</h3>
+                {{ form_start(form) }}
+                    <div class="p-2">{{ form_row(form.title) }}</div>
+                    <div class="p-2">{{ form_row(form.price) }}</div>
+                    <div class="p-2">{{ form_row(form.amount) }}</div>
+                    <div>{{ form_row(form.save) }}</div>
+                {{ form_end(form) }}
+            <div>
+    </main>
+{% endblock %}
