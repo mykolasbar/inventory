@@ -1,16 +1,21 @@
 {% extends 'base.html.twig' %}
+{% form_theme form 'foundation_5_layout.html.twig' %}
 
 {% block main %}
     <main class="container w-75 mt-5">
         <a href="{{ path('home') }}" class="btn btn-sm">Navigate to index page</a>
             <div style = "padding: 20px; border: 1px solid grey; border-radius:10px">
                 <h3>{{ header }}</h3>
-                {{ form_start(form) }}
-                    <div class="p-2">{{ form_row(form.title) }}</div>
-                    <div class="p-2">{{ form_row(form.price) }}</div>
-                    <div class="p-2">{{ form_row(form.amount) }}</div>
-                    <div>{{ form_row(form.save) }}</div>
-                {{ form_end(form) }}
+                    <div>{{ form_label(form.title) }}</div>
+                    <div>{{ form_widget(form.title) }}</div>
+                    <div class = "text-danger">{{ form_errors(form.title) }}</div>
+		            <div>{{ form_label(form.price) }}</div>
+                    <div>{{ form_widget(form.price) }}</div>
+		            <div class = "text-danger">{{ form_errors(form.price) }}</div>
+		            <div>{{ form_label(form.amount) }}</div>
+                    <div>{{ form_widget(form.amount) }}</div>
+		            <div class = "text-danger">{{ form_errors(form.amount) }}</div>
+                    <div class = "mt-3">{{ form_widget(form.save) }}</div>
             <div>
     </main>
 {% endblock %}
