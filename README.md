@@ -9,6 +9,7 @@ A simple CRUD application for managing a shop inventory, made using Symfony fram
     <li>Total price of all items and total amount of all items.</li>
     <li>Search items by title and/or item ID.</li>
 </ul>
+<img src="screenshot.png" alt="App screenshot">
 <h2>Launch Instructions</h2>
 <ol>
     <li>Pull the application from the GitHub directory.</li>
