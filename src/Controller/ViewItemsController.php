@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Item;
 use App\Service\SumTotal;
 use App\Repository\ItemRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,17 +11,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ViewItemsController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(ItemRepository $itemRepository): Response
+    public function index(ItemRepository $itemRepository, SumTotal $sumtotal): Response
     {
         $allItems = $itemRepository->findAll();
-        $totalprice = 0;
-        $totalitems = 0;
 
-        forEach($allItems as $item) {
-            $totalprice += $item->getPrice();
-            $totalitems += $item->getAmount();
-        }
-
-        return $this->render('pages/index.html.twig', ['items' => $allItems, 'totalprice' => $totalprice, 'totalamount' => $totalitems]);
+        return $this->render('pages/index.html.twig', ['items' => $allItems, 'total' => $sumtotal->getSumTotal($allItems)]);
     }
 }

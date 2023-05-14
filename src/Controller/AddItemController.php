@@ -20,17 +20,13 @@ class AddItemController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // /** @var Article $article */
 
             $date = new DateTime();
             
             $data = $form->getData();
 
-            // $item->setDateAdded($date);
-
             $data->setDateAdded($date);
 
-            // dd($data);
             
             $em->persist($data);
             $em->flush();

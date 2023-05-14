@@ -9,33 +9,44 @@
         </div>
     </section>
     <main>
-        <div class="py-5 bg-light">
-            <div class="container">
-            <a href="{{ path('home') }}">Show all</a>
-                <div>Sort items:</div>
-                <div>
-                    <a href="{{ path('alphabeticalsort') }}" class="btn btn-sm btn-outline-secondary">Alphabetically</a>
-                    By ID: <a href="{{ path('increasingsort') }}" class="btn btn-sm btn-outline-secondary">Increasing</a>
-                    <a href="{{ path('decreasingsort') }}" class="btn btn-sm btn-outline-secondary">Decreasing</a>
-                </div>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    {% if results %}
-                        {% for result in results %}
-                            <div class="col">
-                                {{result.title}}
-                                {{result.price}}
-                                {{result.amount}}
-                                <a href="{{ path('edititem', {id: result.id}) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
-                                <a href="{{ path('deleteitem', {id: result.id}) }}" class="btn btn-sm btn-outline-secondary bg-danger text-white">Delete</a>
-                            </div>
+            <div class="py-5 bg-light">
+                <div class="container w-75">
+                    <div class = "pb-3">
+                        <div>
+                            <span><b>Sort items: </b></span>
+                            Alphabetically 
+                            <a href="{{ path('alphabeticalsort') }}" class="btn btn-sm btn-outline-secondary">Increasing</a>
+                            <a href="{{ path('alphabeticalsortreverse') }}" class="btn btn-sm btn-outline-secondary">Decreasing</a>
+                            By ID 
+                            <a href="{{ path('increasingsort') }}" class="btn btn-sm btn-outline-secondary">Increasing</a>
+                            <a href="{{ path('decreasingsort') }}" class="btn btn-sm btn-outline-secondary">Decreasing</a>&nbsp;
+                            <a href="{{ path('additem') }}" class="btn btn-sm btn-outline-secondary bg-primary text-white">Add new item</a>
+                            <a href="{{ path('home') }}">Show all</a>
+                        </div>
+                    </div>
+                    <table class="">
+                        <tr>
+                            <th>Item ID</th>
+                            <th>Title</th>
+                            <th>Price (EUR)</th>
+                            <th>Amount</th>
+                        </tr>
+                        {% for item in results %}
+                            <tr>
+                                <td class = "w-25">{{item.id}}</td>
+                                <td class = "w-25">{{item.title}}</td>
+                                <td class = "w-25">{{item.price}}</td>
+                                <td class = "w-25">{{item.amount}}</td>
+                                <td class="mr-3"><a href="{{ path('edititem', {id: item.id}) }}" class="btn btn-sm btn-outline-secondary">Edit</a></td>
+                                <td><a href="{{ path('deleteitem', {id: item.id}) }}" class="btn btn-sm btn-outline-secondary bg-danger text-white">Delete</a></td>
+                            </tr>
                         {% endfor  %}
-                    {% else %}
-                        <span>No items found.</span>
-                        {{message}}
-                    {% endif %}
+                        <tr>
+                            <td></td><td></td><td><b>Total: </b>{{total.pricetotal}}</td> <td><b>Total: </b>{{total.amounttotal}}</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
 
 {% endblock %}
