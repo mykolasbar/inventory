@@ -21,3 +21,5 @@ A simple CRUD application for managing a shop inventory, made using Symfony fram
     <li>After the installation is complete, run 'symfony server:start' to launch the development server. Alternatively, you can run 'php -S localhost:8000 -t public/' tolaunch the php custom development server.</li>
     <li>You should be able to access the project at http://127.0.0.1:8000/ or localhost:8000.</li>
 </ol>
+
+Made by Mykolas Baranauskas. <a href="https://mykolasbar.github.io/my-website/" target="_blank">Website</a>, <a href="https://www.linkedin.com/in/mykolas-baranauskas-b3809b110/" target="_blank">LinkedIn</a>.
